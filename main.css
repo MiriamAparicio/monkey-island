@@ -24,7 +24,6 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 80px;
   font-weight: 400;
   padding-top: 150px;
   color: yellow;
@@ -80,6 +79,10 @@ body {
 
 .pirate{
   flex: 1 0 auto;
+}
+
+.comeback{
+  width: 100%;
 }
 
 /*----component-----*/
