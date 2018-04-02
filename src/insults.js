@@ -117,3 +117,7 @@ function Insults() {
   -get insult/comeback (turn)
   -get array with comebacks
   -*/
+
+Insults.prototype.getInsultComeback = function () {
+  
+}

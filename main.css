@@ -1,0 +1,112 @@
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* ---- typography ---- */
+
+body {
+  color: #111;
+  font-family: 'Press Start 2P',Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 147%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 80px;
+  font-weight: 400;
+  padding-top: 150px;
+  color: yellow;
+}
+
+h3{
+  color: yellow;
+  font-size: 26px;
+}
+
+.pirate,.guybrush{
+  color: yellow;
+  font-size: 20px;
+  text-align: center;
+}
+
+.pirate-insult, .comeback {
+  font-size: 20px;
+}
+
+/*-----layout ------*/
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.bg{
+  background-image: url("../monkey-island/img/2162-monkey-island-003-nrvhf.jpg");
+  height: 100vh;
+  width: 100%;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 100%;
+}
+
+.score{
+  height: 50%;
+  background-image: url("../monkey-island/img/battle.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0 300px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.guybrush{
+  flex:1 0 auto;
+}
+
+.pirate{
+  flex: 1 0 auto;
+}
+
+/*----component-----*/
+
+#main-content .start-button {
+  padding: 40px 0;
+}
+
+.insult-panel {
+  background-size: cover;
+  background-color:black;  
+}
+
+.pirate-insult{
+  color: blue;
+  text-align: center;
+  padding: 50px 20px 30px 20px;
+}
+
+.comeback {
+  color: mediumvioletred;
+  padding: 10px 20px 100px 20px;
+}
+
+li:hover {
+  color:yellow;
+}
+
+
+

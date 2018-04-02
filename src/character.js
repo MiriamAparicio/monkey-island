@@ -7,3 +7,7 @@ function Character() {
 -update health 
 -set type
 */
+
+Character.prototype.updateHealth = function () {
+  this.health--;
+}
