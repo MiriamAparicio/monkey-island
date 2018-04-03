@@ -20,29 +20,34 @@ body {
   font-family: 'Press Start 2P',Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 147%;
+  color: yellow;
 }
 
 h1 {
   text-align: center;
   font-weight: 400;
   padding-top: 150px;
-  color: yellow;
 }
 
-h3{
-  color: yellow;
-  font-size: 26px;
+h3{  
+  font-size: 20px;
 }
 
-.pirate,.guybrush{
-  color: yellow;
+.pirate,.guybrush {
   font-size: 20px;
   text-align: center;
+  padding-top: 5px;
 }
 
 .pirate-insult, .comeback {
-  font-size: 20px;
+  font-size: 16px;
 }
+
+.player-damage, .pirate-damage {
+  padding-top: 10px;
+}
+
+
 
 /*-----layout ------*/
 
@@ -56,19 +61,31 @@ body {
   background-image: url("../monkey-island/img/2162-monkey-island-003-nrvhf.jpg");
   height: 100vh;
   width: 100%;
-  /* background-position: center; */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 100%;
 }
 
+.div-display {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+}
+.fight{
+  flex:1 1 auto;
+}
+
+.insult-panel {
+  flex:1 1 auto;
+}
+
 .score{
   height: 50%;
-  background-image: url("../monkey-island/img/battle.png");
+  background-image: url("../monkey-island/img/Video Game Pirate GIF-downsized_large.gif");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  padding: 100px 0 300px 0;
+  background-position: 100% top;
+  padding-bottom: 80px;
   display: flex;
   justify-content: space-between;
 }
@@ -85,12 +102,6 @@ body {
   width: 100%;
 }
 
-/*----component-----*/
-
-#main-content .start-button {
-  padding: 40px 0;
-}
-
 .insult-panel {
   background-size: cover;
   background-color:black;  
@@ -102,14 +113,94 @@ body {
   padding: 50px 20px 30px 20px;
 }
 
+@media (min-width: 450px){
+
+  h1 {
+    padding-top: 250px;
+    font-size: 32px;
+  }
+
+  h3{
+    font-size: 36px;
+  }
+
+  #main-content .start-button,
+  #main-content .restart-button{
+    padding: 60px 0;
+  }
+
+  .pirate, .guybrush{
+    font-size: 30px;
+    padding-top: 10px;
+  }
+
+  .score{
+    height: 50%;
+    background-position: center;
+    padding: 10px 0 300px 0;
+  }
+
+  .pirate-insult{
+    padding-top: 70px;
+    padding-bottom: 50px;
+  }
+
+  .pirate-insult, .comeback {
+    font-size: 24px;
+  }
+
+  .comeback {
+    padding-top: 15px;
+    padding-bottom: 300px;
+  }
+
+}
+
+@media (min-width: 1200px) {
+
+  h1 {
+    padding-top: 250px;
+    font-size: 60px;
+  }
+
+  .score{
+    height: 50%;
+    background-position: center;
+    padding: 0 0 400px 0;
+  }
+
+  .pirate-insult {
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+
+  .comeback {
+    padding-top: 10px;
+    padding-bottom: 100px;
+  }
+}
+
+/*----component-----*/
+
+#main-content .start-button,
+#main-content .restart-button{
+  padding: 40px 0;
+}
+
 .comeback {
   color: mediumvioletred;
-  padding: 10px 20px 100px 20px;
+  padding: 5px 30px 200px 20px;
 }
+
+.comeback li {
+  padding-bottom: 10px;
+} 
 
 li:hover {
   color:yellow;
 }
+
+
 
 
 

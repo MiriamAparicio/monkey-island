@@ -1,10 +1,5 @@
 'use strict'
 
-function createHtml(html) {
-  var div = document.createElement("div");
-  div.innerHTML = html;
-  return div.children[0];
-}
 
 function main() {
   var mainContentElement = document.getElementById("main-content");
@@ -13,6 +8,7 @@ function main() {
 
   var titleScreenElement;
   var startButtonElement;
+  var utils = new Utils();
 
   function handleStartClick() {
     destroyTitleScreen();
@@ -20,7 +16,7 @@ function main() {
   }
 
   function buildTitleScreen() {
-    titleScreenElement = createHtml(`<div class='bg'>
+    titleScreenElement = utils.creatHtml(`<div class='bg'>
       <h1>Monkey Island</h1>
       <div class="start-button">
         <button type="button" class="btn btn-danger btn-lg btn-block">Start Game</button>
@@ -52,7 +48,7 @@ function main() {
     game.onEnded(function() {
        gameEnded();
     });
-    //window.setTimeout(gameEnded, 3000);
+    
   }
 
   function destroyGameScreen() {
@@ -70,8 +66,14 @@ function main() {
   }
 
   function buildGameOverScreen() {
-    gameOverScreenElement = createHtml(`<div class='bg'>
-      <h1>You suck as a pirate!</h1>
+    var endMessage = '';
+    if(game.player.health === 0){
+      endMessage = 'You suck as a pirate!';
+    } else {
+      endMessage = 'Ready to conquer the Caribbean!';
+    }
+      gameOverScreenElement = utils.creatHtml(`<div class='bg'>
+      <h1>` + endMessage + `</h1>
       <div class="restart-button">
         <button type="button" class="btn btn-danger btn-lg btn-block">Restart Game</button>
       </div>

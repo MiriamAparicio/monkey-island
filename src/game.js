@@ -22,7 +22,8 @@ Game.prototype.onEnded = function(cb) {
 
 Game.prototype.build = function() {
   var self = this;
-  self.gameScreenElement = createHtml(`<div>
+  self.utils = new Utils();
+  self.gameScreenElement = self.utils.creatHtml(`<div class="div-display">
     <div class="fight">
       <div class = "score">
         <div class="guybrush">
@@ -67,21 +68,12 @@ Game.prototype.start = function() {
   self.player = new Character();
   self.pirate = new Character();
   self.insults = new Insults();
-  self.shuffle(self.insults.engInsults);
+  self.utils.shuffle(self.insults.engInsults);
   self.battle();
 
   console.log(self.insults.engInsults[0].insult);
 };
 
-Game.prototype.shuffle = function(a) {
-  var j, x, i;
-  for (i = a.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1));
-    x = a[i];
-    a[i] = a[j];
-    a[j] = x;
-  }
-};
 
 Game.prototype.battle = function() {
   var self = this;
@@ -99,16 +91,15 @@ Game.prototype.battle = function() {
   };
 
   self.comebacksListElement.addEventListener("click", self.handleComebackClick);
-  console.log(self.comebacksList);
 };
 
 Game.prototype.getComebackList = function() {
   var self = this;
   self.tempArray = [];
-  for (var i = 0; i < self.numAnswers + self.turn; i++) {
+  for (var i = self.turn; i < self.numAnswers + self.turn; i++) {
     self.tempArray.push(self.insults.engInsults[i].comeback);
   }
-  self.shuffle(self.tempArray);
+  self.utils.shuffle(self.tempArray);
   return self.tempArray;
 };
 
@@ -120,23 +111,24 @@ Game.prototype.checkAnswer = function(e) {
     self.handleComebackClick
   );
   if (e.target.innerText == self.insults.engInsults[self.turn].comeback) {
-    self.pirate.health--;
-    self.pirateDamageElement.innerText = 'OUX!';
-    console.log("true");
+    self.pirate.updateHealth();
+    self.pirateDamageElement.innerText = 'OUCH!';
+    //self.pirateDamageElement.style.color = 'yellow';
   } else {
-    self.player.health--;
-    self.playerDamageElement.innerText = "OUX!";
-    console.log("false");
+    self.player.updateHealth();
+    self.playerDamageElement.innerText = "OUCH!";
+    //self.playerDamageElement.style.color = 'yellow';
+
   }
 
   window.setTimeout(function () {
     self.turn++;
-    if(self.player.health == 0 || self.pirate.health == 0){
+    if(self.player.health === 0 || self.pirate.health === 0){
       self.callback();
     }
     self.playerDamageElement.innerText = '';
     self.pirateDamageElement.innerText = '';
     self.comebacksListElement.innerText = '';
     self.battle();
-  },1500);
+  },1000);
 };

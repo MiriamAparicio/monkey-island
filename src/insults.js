@@ -112,12 +112,3 @@ function Insults() {
   ];
 }
 
-/*TODO
-  -shuffle array?(Game)
-  -get insult/comeback (turn)
-  -get array with comebacks
-  -*/
-
-Insults.prototype.getInsultComeback = function () {
-  
-}
