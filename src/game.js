@@ -87,7 +87,6 @@ Game.prototype.battle = function() {
   var self = this;
   self.playerHealthElement.innerText = self.player.health;
   self.pirateHealthElement.innerText = self.pirate.health;
-  //self.pirateInsultElement.innerText = self.insults.engInsults[self.turn].insult;
   self.pirateInsultElement.innerText = self.arrayInsults[self.turn].insult;
   self.comebacksList = self.getComebackList();
   for (var i = 0; i < self.numAnswers; i++) {
@@ -106,7 +105,6 @@ Game.prototype.getComebackList = function() {
   var self = this;
   self.tempArray = [];
   for (var i = self.turn; i < self.numAnswers + self.turn; i++) {
-    // self.tempArray.push(self.insults.engInsults[i].comeback);
     self.tempArray.push(self.arrayInsults[i].comeback);
   }
   self.utils.shuffle(self.tempArray);
@@ -123,23 +121,11 @@ Game.prototype.checkAnswer = function(e) {
 
   if (e.target.innerText == self.arrayInsults[self.turn].comeback) {
     self.pirate.updateHealth();
-    //self.pirateDamageElement.innerText = 'OUCH!';
     self.pirateDamageElement.style.color = "white";
   } else {
     self.player.updateHealth();
-    //self.playerDamageElement.innerText = "OUCH!";
     self.playerDamageElement.style.color = "white";
   }
-
-  // if (e.target.innerText == self.insults.engInsults[self.turn].comeback) {
-  //   self.pirate.updateHealth();
-  //   //self.pirateDamageElement.innerText = 'OUCH!';
-  //   self.pirateDamageElement.style.color = 'yellow';
-  // } else {
-  //   self.player.updateHealth();
-  //   //self.playerDamageElement.innerText = "OUCH!";
-  //   self.playerDamageElement.style.color = 'yellow';
-  // }
 
   window.setTimeout(function () {
     self.turn++;

@@ -10,15 +10,10 @@ function main() {
   var startButtonElement;
   var spaButtonElement;
   var engButtonElement;
-  var utils = new Utils();
   var language;
-  //var audioElement;
+  var utils = new Utils();  
   var music = new Audio("music/chapterscreen.mp3");
 
-  // function handleStartClick() {
-  //   destroyTitleScreen();
-  //   buildGameScreen();
-  // }
   function handleSpaClick() {
     language = 'spa';
     music.pause();
@@ -46,19 +41,14 @@ function main() {
     spaButtonElement.addEventListener('click', handleSpaClick);
     engButtonElement = titleScreenElement.querySelector('.english');
     engButtonElement.addEventListener('click', handleEngClick);
-    //audioElement = titleScreenElement.querySelector("#title-music");
     //music.loop = true;
     music.play();
-
-    // startButtonElement = titleScreenElement.querySelector("button");
-    // startButtonElement.addEventListener("click", handleStartClick);
   }
 
   function destroyTitleScreen() {
     titleScreenElement.remove();
     spaButtonElement.removeEventListener("click", handleSpaClick);
     engButtonElement.removeEventListener("click", handleEngClick);
-    // startButtonElement.removeEventListener("click", handleStartClick);
   }
 
   // -- GAME SCREEN
