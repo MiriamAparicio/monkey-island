@@ -12,6 +12,8 @@ function main() {
   var engButtonElement;
   var utils = new Utils();
   var language;
+  //var audioElement;
+  var music = new Audio("music/chapterscreen.mp3");
 
   // function handleStartClick() {
   //   destroyTitleScreen();
@@ -19,11 +21,13 @@ function main() {
   // }
   function handleSpaClick() {
     language = 'spa';
+    music.pause();
     destroyTitleScreen();
     buildGameScreen(language);
   }
   function handleEngClick() {
     language = 'eng';
+    music.pause();
     destroyTitleScreen();
     buildGameScreen(language);
   }
@@ -31,9 +35,9 @@ function main() {
   function buildTitleScreen() {
     titleScreenElement = utils.creatHtml(`<div class='bg'>
       <h1 class = "title">Monkey Island</h1>
-      <div class="language-buttons">
-        <button type="button" class="btn btn-danger btn-lg spanish">Español</button>
-        <button type="button" class="btn btn-warning btn-lg english">English</button>
+      <div class ="language-buttons">
+        <button type = "button" class= "btn btn-danger btn-lg spanish">Español</button>
+        <button type = "button" class= "btn btn-warning btn-lg english">English</button>
       </div>
     </div>`);
 
@@ -42,6 +46,9 @@ function main() {
     spaButtonElement.addEventListener('click', handleSpaClick);
     engButtonElement = titleScreenElement.querySelector('.english');
     engButtonElement.addEventListener('click', handleEngClick);
+    //audioElement = titleScreenElement.querySelector("#title-music");
+    //music.loop = true;
+    music.play();
 
     // startButtonElement = titleScreenElement.querySelector("button");
     // startButtonElement.addEventListener("click", handleStartClick);
@@ -102,8 +109,11 @@ function main() {
           endMessage = "Ready to conquer the Caribbean!";
         }
     }
-    
-      gameOverScreenElement = utils.creatHtml(`<div class='bg'>
+
+    music.loop = true;
+    music.play();
+
+    gameOverScreenElement = utils.creatHtml(`<div class='bg'>
       <h1>` + endMessage + `</h1>
       <div class="restart-button">
         <button type="button" class="btn btn-danger btn-lg btn-block">Restart Game</button>
@@ -117,6 +127,7 @@ function main() {
   function destroyGameOverScreen() {
     gameOverScreenElement.remove();
     restartGameButtonElement.removeEventListener("click", handleRestartClick);
+    music.pause();
   }
 
   // -- start the app

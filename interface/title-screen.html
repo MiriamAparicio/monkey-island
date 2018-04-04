@@ -14,6 +14,7 @@
 <body>
   <div id="main-content">
     <div class='bg'>
+      <audio id="title-music" src="../music/chapterscreen.mp3" ></audio>
       <h1 class ="title">Monkey Island</h1>
       <div class="language-buttons">
         <button type="button" class="btn btn-danger btn-lg spanish">Español</button>
@@ -22,6 +23,10 @@
       </div>
     </div>
   </div>
+  <script>
+    var x = document.getElementById("title-music");
+    x.play();
+  </script>
 </body>
 
 </html>

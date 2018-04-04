@@ -22,6 +22,7 @@ Game.prototype.onEnded = function(cb) {
 
 Game.prototype.build = function() {
   var self = this;
+  self.music = new Audio ('music/stabbinglargoandlechuckreturns.mp3');
   self.utils = new Utils();
   self.gameScreenElement = self.utils.creatHtml(`<div class="div-display">
     <div class="fight">
@@ -56,10 +57,14 @@ Game.prototype.build = function() {
   self.pirateInsultElement = self.gameScreenElement.querySelector(".insult-line");
   self.comebacksListElement = self.gameScreenElement.querySelector(".comeback-list");
   self.parentElement.appendChild(self.gameScreenElement);
+
+  self.music.loop = true;
+  self.music.play();
 };
 
 Game.prototype.destroy = function() {
   var self = this;
+  self.music.pause();
   self.gameScreenElement.remove();
 };
 
@@ -119,11 +124,11 @@ Game.prototype.checkAnswer = function(e) {
   if (e.target.innerText == self.arrayInsults[self.turn].comeback) {
     self.pirate.updateHealth();
     //self.pirateDamageElement.innerText = 'OUCH!';
-    self.pirateDamageElement.style.color = "yellow";
+    self.pirateDamageElement.style.color = "white";
   } else {
     self.player.updateHealth();
     //self.playerDamageElement.innerText = "OUCH!";
-    self.playerDamageElement.style.color = "yellow";
+    self.playerDamageElement.style.color = "white";
   }
 
   // if (e.target.innerText == self.insults.engInsults[self.turn].comeback) {
