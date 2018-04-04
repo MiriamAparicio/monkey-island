@@ -29,12 +29,12 @@ Game.prototype.build = function() {
         <div class="guybrush">
           <h3 class="player">Guybrush</h3>
           <p class="player-health"></p>
-          <p class="player-damage"></p>
+          <p class="player-damage">OUCH!</p>
         </div>
         <div class="pirate">
           <h3>Pirate</h3>
           <p class="pirate-health"></p>
-          <p class="pirate-damage"></p>
+          <p class="pirate-damage">OUCH!</p>
         </div>
       </div>
     </div>
@@ -112,12 +112,12 @@ Game.prototype.checkAnswer = function(e) {
   );
   if (e.target.innerText == self.insults.engInsults[self.turn].comeback) {
     self.pirate.updateHealth();
-    self.pirateDamageElement.innerText = 'OUCH!';
-    //self.pirateDamageElement.style.color = 'yellow';
+    //self.pirateDamageElement.innerText = 'OUCH!';
+    self.pirateDamageElement.style.color = 'yellow';
   } else {
     self.player.updateHealth();
-    self.playerDamageElement.innerText = "OUCH!";
-    //self.playerDamageElement.style.color = 'yellow';
+    //self.playerDamageElement.innerText = "OUCH!";
+    self.playerDamageElement.style.color = 'yellow';
 
   }
 
@@ -126,8 +126,8 @@ Game.prototype.checkAnswer = function(e) {
     if(self.player.health === 0 || self.pirate.health === 0){
       self.callback();
     }
-    self.playerDamageElement.innerText = '';
-    self.pirateDamageElement.innerText = '';
+    self.playerDamageElement.style.color = 'transparent';
+    self.pirateDamageElement.style.color = 'transparent';
     self.comebacksListElement.innerText = '';
     self.battle();
   },1000);

@@ -45,6 +45,7 @@ h3{
 
 .player-damage, .pirate-damage {
   padding-top: 10px;
+  color: transparent;
 }
 
 
@@ -141,8 +142,8 @@ body {
   }
 
   .pirate-insult{
-    padding-top: 70px;
-    padding-bottom: 50px;
+    padding-top: 60px;
+    padding-bottom: 30px;
   }
 
   .pirate-insult, .comeback {
@@ -170,8 +171,8 @@ body {
   }
 
   .pirate-insult {
-    padding-top: 40px;
-    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 10px;
   }
 
   .comeback {
@@ -198,6 +199,12 @@ body {
 
 li:hover {
   color:yellow;
+}
+
+#main-content .language-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 
