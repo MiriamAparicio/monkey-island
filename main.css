@@ -27,6 +27,11 @@ h1 {
   text-align: center;
   font-weight: 400;
   padding-top: 150px;
+  font-size: 32px;
+}
+
+.title{
+  font-size: 42px;
 }
 
 h3{  
@@ -118,7 +123,6 @@ body {
 
   h1 {
     padding-top: 250px;
-    font-size: 32px;
   }
 
   h3{
@@ -152,7 +156,7 @@ body {
 
   .comeback {
     padding-top: 15px;
-    padding-bottom: 300px;
+    /* padding-bottom: 300px; */
   }
 
 }
@@ -177,7 +181,7 @@ body {
 
   .comeback {
     padding-top: 10px;
-    padding-bottom: 100px;
+    /* padding-bottom: 100px; */
   }
 }
 
@@ -190,7 +194,10 @@ body {
 
 .comeback {
   color: mediumvioletred;
-  padding: 5px 30px 200px 20px;
+  padding-top: 5px;
+  padding-right: 30px;
+  padding-left:20px;
+  padding-bottom: 300px;
 }
 
 .comeback li {
