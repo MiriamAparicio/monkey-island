@@ -13,6 +13,8 @@ body {
   width: 100%;
 }
 
+
+
 /* ---- typography ---- */
 
 body {
@@ -31,9 +33,11 @@ h1 {
   font-size: 32px;
 }
 
-/* .title {
-  font-size: 42px;
-} */
+.intro-text {
+  padding: 20px;
+  padding-bottom: 5px;
+  line-height: 30px;
+}
 
 h3 {  
   font-size: 15px;
@@ -123,6 +127,9 @@ body {
   padding: 40px 20px 20px 20px;
 }
 
+
+
+
 @media (min-width: 450px) {
 
   h1 {
@@ -162,6 +169,10 @@ body {
     padding-top: 15px;
   }
 
+  .intro-text {
+    padding: 200px 30px 20px 30px;
+  }
+
 }
 
 @media (min-width: 1200px) {
@@ -189,7 +200,6 @@ body {
 
 /*----component-----*/
 
-#main-content .start-button,
 #main-content .restart-button{
   padding: 40px 0;
 }
@@ -214,6 +224,13 @@ li:hover {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.guybrush-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
 }
 
 

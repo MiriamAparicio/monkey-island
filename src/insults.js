@@ -56,6 +56,8 @@ function Insults() {
     }
   ];
 
+  this.engIntro = "You want to be a pirate, so you must train your insult-sword battle abilities! Guess which is the best comeback to the pirate's insult or die trying.";
+
   this.spaInsultos =[
     {
       insult: "¿Has dejado ya de usar pañales?",
@@ -110,5 +112,7 @@ function Insults() {
       comeback: "Al ver tan enorme barriga diría que te los has comido."
     },
   ];
+
+  this.spaIntro = "Para ser un buen pirata tienes que entrenar tus habilidades insultado. Adivina la respuesta correcta al insulto del pirata o muere intentandolo!";
 }
 
