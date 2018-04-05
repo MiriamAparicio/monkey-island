@@ -63,7 +63,7 @@ function Insults() {
     }
   ];
 
-  this.engIntro = "You want to be a pirate, so you must train your insult-sword battle abilities! Guess which is the best comeback to the pirate's insult or die trying.";
+  this.engIntro = "You want to be a pirate, so you must train your insult-sword battle abilities!<br> Guess which is the best comeback to the pirate's insult or die trying.";
 
   this.spaInsultos =[
     {
@@ -120,6 +120,6 @@ function Insults() {
     },
   ];
 
-  this.spaIntro = "Para ser un buen pirata tienes que entrenar tus habilidades insultado. Adivina la respuesta correcta al insulto del pirata o muere intentandolo!";
+  this.spaIntro = "Para ser un buen pirata tienes que entrenar tus habilidades insultado.<br> Adivina la respuesta correcta al insulto del pirata o muere intentandolo!";
 }
 
