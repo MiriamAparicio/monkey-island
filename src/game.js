@@ -1,9 +1,21 @@
+'use strict'
+/**
+ * @author Miriam-Aparicio
+ */
+
+/**
+ * creates a instance of Game
+ * 
+ * @constructor Game
+ * @param {dom element} main element
+ * 
+ */
 function Game(parentElement) {
   var self = this;
   self.turn = 0;
   self.numAnswers = 3;
 
-  /*-dom elements-*/
+  /** dom elements */
   self.parentElement = parentElement;
   self.gameScreenElement = null;
 
@@ -15,11 +27,19 @@ function Game(parentElement) {
   self.comebacksListElement = null;
 }
 
+/**
+ * ends game
+ * @param {*} cb callback
+ */
 Game.prototype.onEnded = function(cb) {
   var self = this;
   self.callback = cb;
 };
 
+/**
+ * builds html game screen
+ * initiates music
+ */
 Game.prototype.build = function() {
   var self = this;
   self.music = new Audio ('music/stabbinglargoandlechuckreturns.mp3');
@@ -50,57 +70,67 @@ Game.prototype.build = function() {
     </div>
   </div>`);
 
-  self.playerHealthElement = self.gameScreenElement.querySelector(".player-health");
-  self.pirateHealthElement = self.gameScreenElement.querySelector(".pirate-health");
-  self.playerDamageElement = self.gameScreenElement.querySelector(".player-damage");
-  self.pirateDamageElement = self.gameScreenElement.querySelector(".pirate-damage");
-  self.pirateInsultElement = self.gameScreenElement.querySelector(".insult-line");
-  self.comebacksListElement = self.gameScreenElement.querySelector(".comeback-list");
+  /** dom elements */
+  self.playerHealthElement = self.gameScreenElement.querySelector('.player-health');
+  self.pirateHealthElement = self.gameScreenElement.querySelector('.pirate-health');
+  self.playerDamageElement = self.gameScreenElement.querySelector('.player-damage');
+  self.pirateDamageElement = self.gameScreenElement.querySelector('.pirate-damage');
+  self.pirateInsultElement = self.gameScreenElement.querySelector('.insult-line');
+  self.comebacksListElement = self.gameScreenElement.querySelector('.comeback-list');
   self.parentElement.appendChild(self.gameScreenElement);
 
   self.music.loop = true;
   self.music.play();
 };
 
-Game.prototype.destroy = function() {
-  var self = this;
-  self.music.pause();
-  self.gameScreenElement.remove();
-};
 
+/**
+ * starts game
+ * @param {string} language
+ * creates Character instances
+ * manage language
+ */
 Game.prototype.start = function(language) {
   var self = this;
   self.player = new Character();
   self.pirate = new Character();
   self.insults = new Insults();
+
   if (language === "spa"){
     self.arrayInsults = self.insults.spaInsultos;
   } else {
     self.arrayInsults = self.insults.engInsults;
   }
   self.utils.shuffle(self.arrayInsults);
-  self.battle();
+  self.buildGameElements();
 };
 
-
-Game.prototype.battle = function() {
+/**
+ * build game html elements
+ */
+Game.prototype.buildGameElements = function() {
   var self = this;
   self.playerHealthElement.innerText = self.player.health;
   self.pirateHealthElement.innerText = self.pirate.health;
   self.pirateInsultElement.innerText = self.arrayInsults[self.turn].insult;
   self.comebacksList = self.getComebackList();
+
   for (var i = 0; i < self.numAnswers; i++) {
-    self.comebacksListElement.innerHTML +=
-      "<li>" + self.comebacksList[i] + "</li>";
+    self.comebacksListElement.innerHTML += '<li>' + self.comebacksList[i] + '</li>';
   }
 
   self.handleComebackClick = function(e) {
     self.checkAnswer(e);
   };
 
-  self.comebacksListElement.addEventListener("click", self.handleComebackClick);
+  self.comebacksListElement.addEventListener('click', self.handleComebackClick);
 };
 
+
+/**
+ * @returns and array with only comebacks
+ * and shuffles it
+ */
 Game.prototype.getComebackList = function() {
   var self = this;
   self.tempArray = [];
@@ -111,20 +141,23 @@ Game.prototype.getComebackList = function() {
   return self.tempArray;
 };
 
+/**
+ * checks if the answer is correct
+ * update health
+ * if health 0 en game
+ * @param {event} e 
+ */
 Game.prototype.checkAnswer = function(e) {
   var self = this;
 
-  self.comebacksListElement.removeEventListener(
-    "click",
-    self.handleComebackClick
-  );
+  self.comebacksListElement.removeEventListener('click', self.handleComebackClick);
 
   if (e.target.innerText == self.arrayInsults[self.turn].comeback) {
     self.pirate.updateHealth();
-    self.pirateDamageElement.style.color = "white";
+    self.pirateDamageElement.style.color = 'white';
   } else {
     self.player.updateHealth();
-    self.playerDamageElement.style.color = "white";
+    self.playerDamageElement.style.color = 'white';
   }
 
   window.setTimeout(function () {
@@ -135,6 +168,16 @@ Game.prototype.checkAnswer = function(e) {
     self.playerDamageElement.style.color = 'transparent';
     self.pirateDamageElement.style.color = 'transparent';
     self.comebacksListElement.innerText = '';
-    self.battle();
+    self.buildGameElements();
   },1000);
+};
+
+/** 
+ * destroys game screen
+ * stops music
+ */
+Game.prototype.destroy = function() {
+  var self = this;
+  self.music.pause();
+  self.gameScreenElement.remove();
 };

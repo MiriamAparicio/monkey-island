@@ -1,5 +1,12 @@
 'use strict'
+/**
+ * @author Miriam-Aparicio
+ */
 
+ /**
+  * createa an instance of Insults
+  * @constructor Insults
+  */
 function Insults() {
   this.engInsults = [
     {

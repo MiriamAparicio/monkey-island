@@ -1,13 +1,19 @@
+'use strict'
+/**
+ * @author Miriam-Aparicio
+ */
+
+ /**
+  * creates an instance of Character
+  * @constructor Character
+  */
 function Character() {
   this.health = 3;
-  this.type = null;
 }
 
-/*TODO
--update health 
--set type
-*/
-
+/**
+ * updates property health
+ */
 Character.prototype.updateHealth = function () {
   this.health--;
 }
