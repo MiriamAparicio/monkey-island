@@ -118,14 +118,17 @@ Game.prototype.buildGameElements = function() {
   for (var i = 0; i < self.numAnswers; i++) {
     self.comebacksListElement.innerHTML += '<li>' + self.comebacksList[i] + '</li>';
   }
-
+  /**this function should be outside as a prototype property but doesn't work */
   self.handleComebackClick = function(e) {
+    self.painSound = new Audio("music/Pain-SoundBible.com-1883168362.mp3");
+    self.painSound.play();
     self.checkAnswer(e);
   };
 
   self.comebacksListElement.addEventListener('click', self.handleComebackClick);
 };
 
+Game.prototype.handleComebackClick = 
 
 /**
  * @returns and array with only comebacks
@@ -149,7 +152,6 @@ Game.prototype.getComebackList = function() {
  */
 Game.prototype.checkAnswer = function(e) {
   var self = this;
-
   self.comebacksListElement.removeEventListener('click', self.handleComebackClick);
 
   if (e.target.innerText == self.arrayInsults[self.turn].comeback) {
@@ -170,6 +172,7 @@ Game.prototype.checkAnswer = function(e) {
     self.comebacksListElement.innerText = '';
     self.buildGameElements();
   },1000);
+  window.clearTimeout();
 };
 
 /** 
