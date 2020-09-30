@@ -183,4 +183,6 @@ Game.prototype.destroy = function() {
   var self = this;
   self.music.pause();
   self.gameScreenElement.remove();
+  // If do not reset 'turn' variable, this variable exceeds arrayInsults.
+  self.turn = 0;
 };
